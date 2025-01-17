@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Báo cáo doanh thu</title>
+</head>
+<body>
+
+    <h2>Báo cáo doanh thu từ <span th:text="${startDate}"></span> đến <span th:text="${endDate}"></span></h2>
+
+    <div th:if="${totalRevenue != null}">
+        <h3>Tổng doanh thu: <span th:text="${totalRevenue}"></span> VND</h3>
+    </div>
+
+    <div th:if="${error != null}">
+        <h3 th:text="${error}" style="color: red;"></h3>
+    </div>
+
+</body>
+</html>

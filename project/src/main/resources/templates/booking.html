@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Đặt sân</title>
+    <link rel="stylesheet" href="/css/styles.css">
+
+</head>
+<body>
+
+	 <div th:replace="header-user :: header"></div>
+
+    <main>
+    	
+	   <h1 style="text-align: center;">ĐẶT <span th:text="${field.name}" ></span></h1>
+	   <!-- Hiển thị thông báo lỗi -->
+        <div th:if="${error}" class="alert alert-danger" role="alert">
+            <p th:text="${error}"></p>	
+        </div>
+        
+        <!-- Hiển thị thông báo thành công -->
+        <div th:if="${message}" class="alert alert-success" role="alert">
+            <p th:text="${message}"></p>
+        </div>
+    <form th:action="@{/user/book}" method="post">
+        <input type="hidden" name="fieldId" th:value="${field.id}" />
+        <input type="hidden" name="userId" value="1" /> <!-- Mặc định userId là 1 -->
+
+        <label for="startTime">Thời gian bắt đầu:</label>
+        <input type="datetime-local" id="startTime" name="startTime" required />
+
+        <label for="endTime">Thời gian kết thúc:</label>
+        <input type="datetime-local" id="endTime" name="endTime" required />
+
+        <button type="submit">Xác nhận đặt sân</button>
+    </form>
+    </main>
+
+    
+</body>
+</html>

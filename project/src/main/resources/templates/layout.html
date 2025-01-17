@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}">Hệ thống quản lý sân bóng</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Hệ thống quản lý sân bóng</h1>
+        <a th:href="@{/logout}" class="logout-btn">Đăng xuất</a>
+    </header>
+    <main>
+        <div th:replace="${content}"></div>
+    </main>
+</body>
+</html>

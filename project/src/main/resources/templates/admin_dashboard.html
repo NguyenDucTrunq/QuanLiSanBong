@@ -1,0 +1,147 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Trang quản trị
+  </title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
+   /* Tổng thể */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header-left a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .header-left a:hover {
+            background-color: #0056b3;
+        }
+
+        /* Nút Đăng xuất */
+        .logout-btn {
+            text-decoration: none;
+            background-color: #dc3545;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background-color: #c82333;
+        }
+
+        /* Hình ảnh với nội dung trên */
+        .full-image {
+            position: relative;
+            width: 100%;
+            height: calc(100vh - 60px); /* Trừ chiều cao của header */
+            overflow: hidden;
+        }
+
+        .full-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .content-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .content-overlay h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .content-overlay p {
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+        }
+
+        .content-overlay .btn {
+            font-size: 1.25rem;
+        }
+  </style>
+ </head>
+ <body>
+  <!-- Header -->
+  <header>
+   <div class="header-left">
+    <a href="/admin/dashboard">
+     Quản lý Sân
+    </a>
+    <a href="/admin/dashboard">
+     Trang chủ
+    </a>
+    <a href="/admin/fields/create">
+     Thêm sân mới
+    </a>
+    <a href="/admin/revenue-form">
+     Báo cáo doanh thu
+    </a>
+    <a href="/admin/bookings">
+     Lịch sử đặt sân
+    </a>
+   </div>
+   <a class="logout-btn" href="/logout">
+    Đăng xuất
+   </a>
+  </header>
+  <!-- Hình ảnh với nội dung trên -->
+  <div class="full-image">
+   <div class="content-overlay">
+    <h2>
+     Chào mừng bạn đến với trang quản lý sân bóng
+    </h2>
+    <p class="lead">
+     Từ đây bạn có thể quản lý tất cả các sân bóng, thêm mới, chỉnh sửa hoặc xóa các sân bóng trong hệ thống.
+    </p>
+    <a class="btn btn-primary btn-lg mt-3" href="/admin/fields">
+     Xem danh sách sân
+    </a>
+   </div>
+   <img alt="Sân bóng" src="/images/2.jpg"/>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+  </script>
+ </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lịch sử đặt sân</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+    <div th:replace="header :: header"></div>    
+
+    <main>
+        <h1 style="text-align: center;">LỊCH SỬ ĐẶT SÂN</h1>
+        <!-- Thêm xử lý kiểm tra bằng JavaScript -->
+        <form method="get" action="/admin/bookings" onsubmit="return validateDates()">
+            <label for="startDate">Ngày bắt đầu:</label>
+            <input type="date" id="startDate" name="startDate" th:value="${startDate}" required>
+            
+            <label for="endDate">Ngày kết thúc:</label>
+            <input type="date" id="endDate" name="endDate" th:value="${endDate}" required>
+            
+            <button type="submit">Lọc</button>
+        </form>
+        
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Tên sân</th>
+                    <th>Thời gian bắt đầu</th>
+                    <th>Thời gian kết thúc</th>
+                    <th>Giá</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="booking : ${bookings}">
+                    <td th:text="${booking.field.name}"></td>
+                    <td th:text="${booking.startTime}"></td>
+                    <td th:text="${booking.endTime}"></td>
+                    <td th:text="${booking.price}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <!-- JavaScript kiểm tra ngày -->
+    <script>
+        function validateDates() {
+            const startDate = document.getElementById("startDate").value;
+            const endDate = document.getElementById("endDate").value;
+
+            // Kiểm tra ngày rỗng
+            if (!startDate || !endDate) {
+                alert("Ngày bắt đầu và ngày kết thúc không được để trống.");
+                return false; // Ngăn form gửi đi
+            }
+
+            // Kiểm tra ngày bắt đầu không sau ngày kết thúc
+            if (new Date(startDate) > new Date(endDate)) {
+                alert("Ngày bắt đầu không thể sau ngày kết thúc.");
+                return false; // Ngăn form gửi đi
+            }
+
+            return true; // Cho phép gửi form nếu dữ liệu hợp lệ
+        }
+    </script>
+</body>
+</html>

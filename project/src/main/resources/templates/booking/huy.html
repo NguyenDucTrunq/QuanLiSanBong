@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Xác nhận hủy đơn đặt sân</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div th:replace="header-user :: header"></div>
+
+    <main>
+        <h1 style="text-align: center;">Xác nhận hủy đơn đặt sân</h1>
+
+        <p style="text-align: center;">
+            Bạn có chắc chắn muốn hủy đơn đặt sân 
+            <strong th:text="${booking.field.name}"></strong> 
+            từ <span th:text="${booking.startTime}"></span> 
+            đến <span th:text="${booking.endTime}"></span>?
+        </p>
+
+        <form th:action="@{/booking/cancel/{id}(id=${booking.id})}" method="post" style="text-align: center; margin-top: 20px;">
+            <button type="submit" class="btn btn-danger">Hủy đơn đặt</button>
+            <a href="/user/history" class="btn">Hủy bỏ</a>
+        </form>
+    </main>
+</body>
+</html>

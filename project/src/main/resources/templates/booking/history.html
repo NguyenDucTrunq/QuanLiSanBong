@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lịch sử đặt sân</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div th:replace="header-user :: header"></div>
+
+    <main>
+        <h1 style="text-align: center;">LỊCH SỬ ĐẶT SÂN</h1>
+        
+         <div style="text-align: center; margin-bottom: 20px;">
+            <p th:if="${success}" th:text="${success}" style="color: green; font-weight: bold;"></p>
+            <p th:if="${error}" th:text="${error}" style="color: red; font-weight: bold;"></p>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Tên sân</th>
+                    <th>Thời gian bắt đầu</th>
+                    <th>Thời gian kết thúc</th>
+                    <th>Giá</th>
+                    <th>Hành động</th> <!-- Thêm cột Hành động -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="booking : ${bookings}">
+                    <td th:text="${booking.field.name}"></td>
+                    <td th:text="${booking.startTime}"></td>
+                    <td th:text="${booking.endTime}"></td>
+                    <td th:text="${booking.price}"></td>
+                    <td>
+    		 <!-- <a th:href="@{/booking/edit/{id}(id=${booking.id})}" class="btn btn-primary">
+        Chỉnh sửa
+    		</a>  -->
+    		 <a th:href="@{/booking/cancel/{id}(id=${booking.id})}"class="btn btn-primary">Hủy</a> <!-- Nút hủy đơn -->
+
+    		
+		</td>
+                </tr>
+            </tbody>	
+        </table>
+    </main>
+</body>
+</html>
